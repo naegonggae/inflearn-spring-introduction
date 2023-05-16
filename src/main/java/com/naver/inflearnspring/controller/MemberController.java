@@ -1,8 +1,11 @@
 package com.naver.inflearnspring.controller;
 
+import com.naver.inflearnspring.domain.Member;
 import com.naver.inflearnspring.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 // Controller, service, repository 어노테이션들은 다 component를 포함하고 있다.
@@ -27,4 +30,22 @@ public class MemberController {
 		this.memberService = memberService;
 	}
 	// MemberController가 생성이 될때 스프링 빈에 등록되어있는 멤버 서비스 객체를 가져다 넣어줌 = DI = 의존관계 주입
+
+	@GetMapping("/members/new")
+	public String createForm() {
+		return "members/createMemberForm";
+	}
+	// cmd + option + L = 코드 정렬
+
+	@PostMapping("/members/new")
+	public String create(MemberForm memberForm) {
+		Member member = new Member();
+		member.setName(memberForm.getName());
+
+		System.out.println("membre = "+ member.getName());
+
+		memberService.join(member);
+
+		return "redirect:/"; // home으로 보내기
+	}
 }
