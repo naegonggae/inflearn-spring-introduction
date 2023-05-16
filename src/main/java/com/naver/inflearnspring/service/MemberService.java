@@ -1,13 +1,22 @@
 package com.naver.inflearnspring.service;
 
 import com.naver.inflearnspring.domain.Member;
-import com.naver.inflearnspring.repository.MemoryMemberRepository;
+import com.naver.inflearnspring.repository.MemberRepository;
 import java.util.List;
 import java.util.Optional;
 
 public class MemberService {
+	// cmd + shift + T = 테스트 코드 만들기 단축키
 
-	private final MemoryMemberRepository memberRepository = new MemoryMemberRepository();
+//	private final MemberRepository memberRepository = new MemoryMemberRepository();
+	// new를 해서 받아온 인스턴스랑 테스트코드에서 또 new한 인스턴스랑 다른것이된다.
+
+	private final MemberRepository memberRepository;
+
+	public MemberService(MemberRepository memberRepository) {
+		this.memberRepository = memberRepository;
+	} // MemberRepository를 직접 new 하지않고 외부에서 넣어주도록 변경
+
 
 	/** 회원가입 **/
 	public Long join(Member member) {

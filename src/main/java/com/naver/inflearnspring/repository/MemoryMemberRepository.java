@@ -10,6 +10,7 @@ import java.util.Optional;
 public class MemoryMemberRepository implements MemberRepository{
 
 	private static Map<Long, Member> store = new HashMap<>();
+	// 이게 static이 아니면 서비스클래스랑 서비스테스트클래스에서 new해서 참조할때 서로 다른 객체를 참조하게됨 즉, 다른db가 됨.
 	// key와 value로 접근
 	private static long sequence = 0L;
 
