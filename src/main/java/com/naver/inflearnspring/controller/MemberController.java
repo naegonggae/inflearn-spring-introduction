@@ -12,8 +12,16 @@ public class MemberController {
 	// 컨트롤러 어노테이션이 붙은 클래스가 있으면 스프링 컨테이너에 멤버 컨트롤러 객체를 생성하고 관리한다.
 	// = 스프링 컨테이너에서 bean이 관리 된다.
 
-	private final MemberService memberService;
+	private  MemberService memberService;
+//	@Autowired private final MemberService memberService; 1. 필드 주입 방법
 
+//	@Autowired // 2. setter 주입 방법
+//	public void setMemberService(MemberService memberService) {
+//		this.memberService = memberService;
+//		변경될수 있어서 권장하지 않음
+//	}
+
+	// 3. 생성자 주입 방법
 	@Autowired // 컨테이너에서 memberService를 찾아오는 역할
 	public MemberController(MemberService memberService) {
 		this.memberService = memberService;
