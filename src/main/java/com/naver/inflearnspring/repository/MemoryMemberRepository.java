@@ -41,4 +41,8 @@ public class MemoryMemberRepository implements MemberRepository{
 		// .values values만 모두 출력 list형태임
 		// store에 value가 member이니까
 	}
+
+	public void clearStore() {
+		store.clear();
+	}
 }
