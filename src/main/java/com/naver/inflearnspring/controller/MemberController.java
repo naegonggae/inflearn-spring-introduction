@@ -2,8 +2,10 @@ package com.naver.inflearnspring.controller;
 
 import com.naver.inflearnspring.domain.Member;
 import com.naver.inflearnspring.service.MemberService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -47,5 +49,15 @@ public class MemberController {
 		memberService.join(member);
 
 		return "redirect:/"; // home으로 보내기
+	}
+
+	@GetMapping("/members")
+	public String list(Model model) {
+		List<Member> members = memberService.findMembers();
+		model.addAttribute("members", members);
+
+		return "members/memberList";
+		// cmd + E = 가장 최근에 봤던 파일 리스트
+		// 메모리에 저장한경우 동작을 멈출경우 데이터가 비워진다.
 	}
 }
