@@ -1,15 +1,8 @@
 package com.naver.inflearnspring;
 
-import com.naver.inflearnspring.repository.JdbcMemberRepository;
-import com.naver.inflearnspring.repository.JdbcTemplateMemberRepository;
 import com.naver.inflearnspring.repository.JpaMemberRepository;
 import com.naver.inflearnspring.repository.MemberRepository;
-import com.naver.inflearnspring.repository.MemoryMemberRepository;
 import com.naver.inflearnspring.service.MemberService;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import javax.sql.DataSource;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -26,25 +19,32 @@ public class SpringConfig {
 
 	// jpa할때 DI
 //	@PersistenceContext
-	private final EntityManager em;
-	@Autowired
-	public SpringConfig(EntityManager em) {
-		this.em = em;
+//	private final EntityManager em;
+//	@Autowired
+//	public SpringConfig(EntityManager em) {
+//		this.em = em;
+//	}
+
+	// spring data jpa DI
+	private final MemberRepository memberRepository;
+
+	public SpringConfig(MemberRepository memberRepository) {
+		this.memberRepository = memberRepository;
 	}
 
 
 	@Bean
 	public MemberService memberService() {
-		return new MemberService(memberRepository());
+		return new MemberService(memberRepository);
 	}
 
-	@Bean
-	public MemberRepository memberRepository() {
+//	@Bean
+//	public MemberRepository memberRepository() {
 //		return new MemoryMemberRepository();
 //		return new JdbcMemberRepository(dataSource);
 //		return new JdbcTemplateMemberRepository(dataSource);
-		return new JpaMemberRepository(em);
-	}
+//		return new JpaMemberRepository(em);
+//	}
 	// spring의 장점
 	// 메모리사용하는 로직 쓰다가 h2 db 쓰도록 로직을 바꿨는데 인터페이스도 같은걸 사용해서 구현했고(다형성)
 	// DI 설정도 조립만 하니까 객체 지향적이다.
