@@ -6,8 +6,10 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 //@Service
+@Transactional // jpa 사용하면 반드시 있어야함 데이터의 변경은 transaction 내부에서 실행되어야함
 public class MemberService {
 	// cmd + shift + T = 테스트 코드 만들기 단축키
 

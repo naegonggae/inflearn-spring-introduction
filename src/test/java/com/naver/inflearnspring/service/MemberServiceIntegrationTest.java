@@ -5,9 +5,11 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import com.naver.inflearnspring.domain.Member;
 import com.naver.inflearnspring.repository.MemberRepository;
+import jakarta.persistence.Column;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 // 통합테스트보다 단위 테스트가 더 좋은 테스트라고 할 수 있다.
 // 단위 테스트는 독립적으로 이루어지고 스프링 컨테이너를 거치지않아 빠르다
@@ -23,10 +25,11 @@ public class MemberServiceIntegrationTest {
 	@Autowired MemberRepository memberRepository;
 
 	@Test
+//	@Commit 이거하면 진짜 저장하는거야
 	void 회원가입() {
 		// given
 		Member member = new Member();
-		member.setName("hoho");
+		member.setName("hehe");
 
 		// when
 		Long savedId = memberService.join(member);

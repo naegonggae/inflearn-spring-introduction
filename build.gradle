@@ -18,8 +18,13 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
     // jdbc, h2 라이브러리
-    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+//    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
     runtimeOnly 'com.h2database:h2'
+
+    // jpa jdbc도 포함함
+    // jpa는 자바 진영의 표준 인터페이스임 구현은 여러 업체에서 함
+    // ORM O는 객체 R은 relational database table을 M Mapping하는 것
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
 }
 
