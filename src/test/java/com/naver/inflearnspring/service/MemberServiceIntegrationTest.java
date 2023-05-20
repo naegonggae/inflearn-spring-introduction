@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional // 테스트 클래스에 있을때만 아래의 기능을 하고 그냥 보통 코드에 있으면 잘 코밋해서 저장해줌
 // 테스트는 계속 반복가능해야한다.
 // 그래서 트랜잭션을 붙여서 insert를 날려도 나중에 db에 코밋되기전에 롤백해놓는다. 즉, db에 직접 코밋이 되기전에 롤백해 반복가능한 테스트가 된다.
+// 테스트를 잘짜자!
 public class MemberServiceIntegrationTest {
 
 	// test에서는 직접 DI해줘도 상관없다.

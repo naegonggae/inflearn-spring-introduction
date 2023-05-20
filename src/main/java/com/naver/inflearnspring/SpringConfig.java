@@ -1,6 +1,7 @@
 package com.naver.inflearnspring;
 
 import com.naver.inflearnspring.repository.JdbcMemberRepository;
+import com.naver.inflearnspring.repository.JdbcTemplateMemberRepository;
 import com.naver.inflearnspring.repository.MemberRepository;
 import com.naver.inflearnspring.repository.MemoryMemberRepository;
 import com.naver.inflearnspring.service.MemberService;
@@ -28,7 +29,8 @@ public class SpringConfig {
 	@Bean
 	public MemberRepository memberRepository() {
 //		return new MemoryMemberRepository();
-		return new JdbcMemberRepository(dataSource);
+//		return new JdbcMemberRepository(dataSource);
+		return new JdbcTemplateMemberRepository(dataSource);
 	}
 	// spring의 장점
 	// 메모리사용하는 로직 쓰다가 h2 db 쓰도록 로직을 바꿨는데 인터페이스도 같은걸 사용해서 구현했고(다형성)
