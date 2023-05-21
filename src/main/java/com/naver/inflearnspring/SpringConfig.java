@@ -1,5 +1,6 @@
 package com.naver.inflearnspring;
 
+import com.naver.inflearnspring.aop.TimeTraceAop;
 import com.naver.inflearnspring.repository.JpaMemberRepository;
 import com.naver.inflearnspring.repository.MemberRepository;
 import com.naver.inflearnspring.service.MemberService;
@@ -32,6 +33,10 @@ public class SpringConfig {
 		this.memberRepository = memberRepository;
 	}
 
+//	@Bean // 이렇게 스프링 빈에 직접 등록해주는게 좋음 가독성 측면
+//	public TimeTraceAop timeTraceAop() {
+//		return new TimeTraceAop();
+//	}
 
 	@Bean
 	public MemberService memberService() {

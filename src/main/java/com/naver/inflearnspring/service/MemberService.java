@@ -42,9 +42,9 @@ public class MemberService {
 			memberRepository.save(member);
 			return member.getId();
 		} finally {
-			long finish = System.currentTimeMillis();
-			long timeMs = finish - start;
-			System.out.println("join = "+timeMs+ "ms");
+//			long finish = System.currentTimeMillis();
+//			long timeMs = finish - start;
+//			System.out.println("join = "+timeMs+ "ms");
 		}
 
 

@@ -29,7 +29,9 @@ public class MemberController {
 	// 3. 생성자 주입 방법
 	@Autowired // 컨테이너에서 memberService를 찾아오는 역할
 	public MemberController(MemberService memberService) {
+
 		this.memberService = memberService;
+		System.out.println("memberService " + memberService.getClass());
 	}
 	// MemberController가 생성이 될때 스프링 빈에 등록되어있는 멤버 서비스 객체를 가져다 넣어줌 = DI = 의존관계 주입
 
