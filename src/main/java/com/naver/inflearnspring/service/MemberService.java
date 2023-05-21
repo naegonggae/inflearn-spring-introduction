@@ -32,13 +32,22 @@ public class MemberService {
 //		result.ifPresent(m -> {
 //			throw new IllegalStateException("이미 존재하는 회원입니다.");
 //		});
-		// 값이 있으면 진행
+		long start = System.currentTimeMillis(); // 시간 찍어보기
 
-		validateDuplicateMember(member);
-		// option + cmd + m = 드래그한 로직을 메서드로 만들기
+		try {
+			// 값이 있으면 진행
+			validateDuplicateMember(member);
+			// option + cmd + m = 드래그한 로직을 메서드로 만들기
 
-		memberRepository.save(member);
-		return member.getId();
+			memberRepository.save(member);
+			return member.getId();
+		} finally {
+			long finish = System.currentTimeMillis();
+			long timeMs = finish - start;
+			System.out.println("join = "+timeMs+ "ms");
+		}
+
+
 
 
 	}
